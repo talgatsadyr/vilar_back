@@ -1,12 +1,6 @@
 from rest_framework import serializers
 
-from villa.models import Villa, Block, Floor, Apartment
-
-
-class VillaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Villa
-        fields = '__all__'
+from villa.models import Block, Floor, Apartment
 
 
 class BlockSerializer(serializers.ModelSerializer):

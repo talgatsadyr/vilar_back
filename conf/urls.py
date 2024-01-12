@@ -6,7 +6,6 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
 from conf import settings
-from villa.views import TemplateViewIndex
 
 schema_view = get_schema_view(
    openapi.Info(
