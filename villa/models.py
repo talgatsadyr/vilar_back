@@ -46,6 +46,7 @@ class Apartment(models.Model):
     number = models.IntegerField(null=True, blank=True, verbose_name='Номер апартамента')
     description = models.TextField(null=True, blank=True, verbose_name='Описание апартамента')
     image = models.FileField(null=True, blank=True, verbose_name='Изображение апартамента', upload_to='apartments')
+    image_2 = models.FileField(null=True, blank=True, verbose_name='Изображение апартамента без мебели', upload_to='apartments')
     is_sold = models.BooleanField(default=False, verbose_name='Продано')
     sold_time = models.DateTimeField(null=True, blank=True, verbose_name='Время продажи')
     square = models.FloatField(null=True, blank=True, verbose_name='Площадь')
