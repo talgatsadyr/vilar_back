@@ -19,3 +19,10 @@ class ApartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Apartment
         fields = '__all__'
+
+
+class FloorDetailSerializer(serializers.ModelSerializer):
+    apartments = ApartmentSerializer(many=True, read_only=True)
+    class Meta:
+        model = Floor
+        fields = '__all__'

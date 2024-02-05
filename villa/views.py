@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from villa.models import Block, Floor, Apartment
-from villa.serializers import ApartmentSerializer, BlockSerializer, FloorSerializer
+from villa.serializers import ApartmentSerializer, BlockSerializer, FloorSerializer, FloorDetailSerializer
 
 
 class BlockList(ListAPIView):
@@ -23,6 +23,18 @@ class FloorList(ListAPIView):
     permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['block']
+
+
+class FloorDetail(GenericAPIView):
+    serializer_class = FloorDetailSerializer
+    queryset = Floor.objects.all()
+    permission_classes = [AllowAny]
+    lookup_field = 'id'
+
+    def get(self, request, *args, **kwargs):
+        floor = self.get_object()
+        serializer = FloorDetailSerializer(floor)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ApartmentList(ListAPIView):
