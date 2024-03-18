@@ -53,6 +53,7 @@ class Apartment(models.Model):
     price = models.FloatField(null=True, blank=True, verbose_name='Цена')
     rooms = models.IntegerField(null=True, blank=True, verbose_name='Количество комнат')
     pdf_file = models.FileField(null=True, blank=True, verbose_name='PDF файл', upload_to='apartments')
+    variant = models.IntegerField(null=True, blank=True, verbose_name='Вариант')
 
     def __str__(self):
         return f'{self.number}'
