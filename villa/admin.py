@@ -36,7 +36,7 @@ class ApartmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'number', 'floor', 'is_sold')
     list_display_links = list_display
     search_fields = ('number', 'floor__number', 'floor__block__title')
-    list_filter = ('floor', 'is_sold')
+    list_filter = ('is_sold', 'floor',)
     inlines = [ApartmentInline]
 
 
