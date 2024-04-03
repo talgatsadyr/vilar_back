@@ -1,5 +1,5 @@
 from django.urls import path
-from villa.views import BlockList, FloorList, ApartmentList, ApartmentView, FloorDetail
+from villa.views import BlockList, FloorList, ApartmentList, ApartmentView, FloorDetail, FloorListView
 
 urlpatterns = [
     path('block_list/', BlockList.as_view(), name='block_list'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('apartment_list/', ApartmentList.as_view(), name='apartment_list'),
     path('apartment_detail/<int:number>/', ApartmentView.as_view(), name='apartment_detail'),
     path('floor_detail/<int:id>/', FloorDetail.as_view(), name='floor_detail'),
+    path('floor_list_apartment/', FloorListView.as_view(), name='floor_list_apartment'),
 ]

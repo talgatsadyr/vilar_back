@@ -55,3 +55,13 @@ class ApartmentView(GenericAPIView):
         apartment = Apartment.objects.filter(number=number).first()
         serializer = ApartmentSerializer(apartment)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class FloorListView(ListAPIView):
+    serializer_class = FloorDetailSerializer
+    queryset = Floor.objects.all()
+    permission_classes = [AllowAny]
+    pagination_class = None
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['block', 'number']
+

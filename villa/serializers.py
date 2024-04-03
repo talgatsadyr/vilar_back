@@ -22,7 +22,16 @@ class ApartmentSerializer(serializers.ModelSerializer):
 
 
 class FloorDetailSerializer(serializers.ModelSerializer):
-    apartments = ApartmentSerializer(many=True, read_only=True)
+    apartments = serializers.SerializerMethodField()
     class Meta:
         model = Floor
         fields = '__all__'
+
+    def get_apartments(self, obj):
+        request = self.context.get('request')
+        if request.query_params.get('apartment_number'):
+            apartments = obj.apartments.filter(number=request.query_params.get('apartment_number'))
+        else:
+            apartments = obj.apartments.all()
+        serializer = ApartmentSerializer(apartments, many=True, context={'request': request})
+        return serializer.data
